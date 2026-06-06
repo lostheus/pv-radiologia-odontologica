@@ -1,0 +1,1364 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+/* --- IDENTIDADE VISUAL EDITADA — PALETA DE CORES FORNECIDA --- */
+:root {
+    --primary: #1A3C5E;          /* Primária (Azul Clínico) */
+    --primary-rgb: 26, 60, 94;
+    --primary-light: #2E6DA4;    /* Primária Clara (Destaques Médios) */
+    --primary-light-rgb: 46, 109, 164;
+    
+    --accent: #F5A623;           /* Acento / CTA (Laranja Âmbar) */
+    --accent-rgb: 245, 166, 35;
+    --accent-hover: #E8830A;     /* Acento Hover */
+    
+    --bg-escuro: #1C1C2E;        /* Fundo Escuro (Roxo-Cinza Índigo) */
+    --bg-escuro-card: #27273b;   /* Fundo do card no bloco escuro */
+    
+    --bg-claro: #F7F4EF;         /* Fundo Claro (Alabastro / Areia Suave) */
+    --bg-claro-card: #FFFFFF;    /* Fundo do card no bloco claro (Branco) */
+    
+    --text-slate: #4A5568;       /* Texto Secundário (Cinza Slate) */
+    --white: #FFFFFF;            /* Branco */
+    
+    --font-title: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- RESET & CONFIGURAÇÕES GERAIS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--bg-claro);
+    color: var(--text-slate);
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-title);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* --- GRID & LAYOUT --- */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+section {
+    padding: 100px 0;
+    position: relative;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 60px 0;
+    }
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+/* --- ALTERNÂNCIA DE BLOCOS COM AS CORES DA OFERTA --- */
+
+/* 1. BLOCOS ESCUROS (bg-escuro) — Fundo Roxo-Cinza Índigo */
+.bg-escuro {
+    background-color: var(--bg-escuro);
+    color: #e2e8f0;
+    border-bottom: 1px solid rgba(var(--primary-light-rgb), 0.2);
+}
+
+.bg-escuro h1, 
+.bg-escuro h2, 
+.bg-escuro h3 {
+    color: var(--white);
+}
+
+.bg-escuro span.highlight {
+    color: var(--accent);
+    font-weight: 800;
+}
+
+.bg-escuro span.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-color: rgba(var(--accent-rgb), 0.15);
+    z-index: -1;
+    border-radius: 4px;
+}
+
+.bg-escuro p {
+    color: #cbd5e1;
+}
+
+/* 2. BLOCOS CLAROS (bg-claro) — Fundo Alabastro Suave */
+.bg-claro {
+    background-color: var(--bg-claro);
+    color: var(--text-slate);
+    border-bottom: 1px solid rgba(var(--primary-rgb), 0.05);
+}
+
+.bg-claro h2, 
+.bg-claro h3 {
+    color: var(--primary); /* Azul Marinho Clínico */
+}
+
+.bg-claro span.highlight {
+    color: var(--primary-light);
+    font-weight: 800;
+}
+
+.bg-claro span.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-color: rgba(var(--primary-light-rgb), 0.12);
+    z-index: -1;
+    border-radius: 4px;
+}
+
+.bg-claro p {
+    color: var(--text-slate);
+}
+
+/* --- TÍTULOS DE SEÇÃO --- */
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3.5rem;
+    position: relative;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-light), var(--accent));
+    margin: 1rem auto 0;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(var(--accent-rgb), 0.2);
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+/* --- BOTÕES & ANIMAÇÕES --- */
+.center-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+    color: #1C1C2E; /* Texto escuro contrastante no botão âmbar */
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: 1.15rem;
+    padding: 18px 40px;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(var(--accent-rgb), 0.3);
+    transition: var(--transition);
+    text-align: center;
+    letter-spacing: 0.02em;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #ffb83d, var(--accent));
+    box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.45);
+    color: #000000;
+}
+
+.btn-pulse {
+    position: relative;
+    overflow: hidden;
+    animation: buttonPulse 2.5s infinite;
+}
+
+@keyframes buttonPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.5);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(var(--accent-rgb), 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0);
+    }
+}
+
+/* --- BLOCO 01 - HERO (ESCUDO) --- */
+.hero {
+    padding-top: 60px;
+    padding-bottom: 50px;
+    background: radial-gradient(circle at top center, rgba(var(--primary-light-rgb), 0.15), transparent 60%), var(--bg-escuro);
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.15;
+    max-width: 950px;
+    margin: 0 auto 1.5rem;
+    letter-spacing: -0.03em;
+    font-weight: 800;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    max-width: 750px;
+    margin: 1.5rem auto 0;
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+.hero .center-btn {
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    .hero h1 {
+        font-size: 1.75rem;
+        margin: 0 auto 0.75rem;
+    }
+    .hero p {
+        font-size: 0.9rem;
+        margin: 0.75rem auto 0;
+        line-height: 1.5;
+    }
+    .hero-mockup-wrapper {
+        margin: 0.75rem auto !important;
+    }
+    .hero-mockup-image {
+        max-height: 230px;
+    }
+    .hero .center-btn {
+        margin-top: 1rem;
+    }
+    .hero .btn {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+    }
+}
+
+/* MOCKUP PRINCIPAL - CONTAINER DE IMAGEM */
+.hero-mockup-wrapper {
+    max-width: 580px;
+    margin: 1.5rem auto;
+}
+
+.mockup-placeholder-container {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    background: var(--bg-escuro-card);
+    border: 2px dashed rgba(var(--primary-light-rgb), 0.4);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    transition: var(--transition);
+}
+
+.mockup-placeholder-container:hover {
+    border-color: var(--accent);
+    box-shadow: 0 20px 45px rgba(var(--accent-rgb), 0.15);
+}
+
+.mockup-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #a0aec0;
+    text-align: center;
+    padding: 24px;
+    pointer-events: none;
+}
+
+.mockup-empty-state i {
+    color: var(--primary-light);
+    filter: drop-shadow(0 2px 4px rgba(var(--primary-light-rgb), 0.2));
+}
+
+.mockup-empty-state span:nth-of-type(1) {
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.mockup-empty-state span:nth-of-type(2) {
+    font-size: 0.9rem;
+    color: #a0aec0;
+    max-width: 320px;
+}
+
+.hero-mockup-image {
+    display: block;
+    width: 100%;
+    max-height: 450px;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    margin: 0 auto;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.35));
+    transition: var(--transition);
+}
+
+.hero-mockup-image:hover {
+    transform: translateY(-2px);
+}
+
+/* --- BLOCO 02 - VEJA POR DENTRO (CLARO) --- */
+.demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-bottom: 2.5rem;
+}
+
+.demo-placeholder {
+    height: 280px;
+    background: var(--white);
+    border: 1px solid rgba(var(--primary-light-rgb), 0.12);
+    border-radius: var(--radius-md);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 16px;
+    transition: var(--transition);
+    cursor: pointer;
+    box-shadow: 0 10px 25px -5px rgba(var(--primary-rgb), 0.05), 0 8px 10px -6px rgba(var(--primary-rgb), 0.05);
+}
+
+.demo-placeholder i {
+    color: var(--primary-light);
+    filter: drop-shadow(0 4px 8px rgba(var(--primary-light-rgb), 0.12));
+    transition: var(--transition);
+}
+
+.demo-placeholder span:nth-of-type(1) {
+    font-family: var(--font-title);
+    font-size: 1.15rem;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.demo-placeholder span:nth-of-type(2) {
+    font-size: 0.9rem;
+    color: var(--text-slate);
+}
+
+.demo-placeholder:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px -5px rgba(var(--primary-light-rgb), 0.15), 0 0 0 1px rgba(var(--primary-light-rgb), 0.2);
+    border-color: rgba(var(--primary-light-rgb), 0.35);
+}
+
+.demo-caption {
+    text-align: center;
+    font-size: 1.15rem;
+    max-width: 650px;
+    margin: 2rem auto 0;
+}
+
+/* --- BLOCO 03 - BENEFÍCIOS DO PRODUTO (ESCUDO) --- */
+.bg-escuro .benefit-card {
+    background: var(--bg-escuro-card);
+    border: 1px solid rgba(var(--primary-light-rgb), 0.15);
+    border-radius: var(--radius-md);
+    padding: 40px;
+    transition: var(--transition);
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.bg-escuro .benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 40px;
+    width: 40px;
+    height: 3px;
+    background: var(--primary-light);
+    border-radius: 0 0 4px 4px;
+    opacity: 0.8;
+    transition: var(--transition);
+}
+
+.bg-escuro .benefit-card i {
+    color: var(--primary-light);
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.bg-escuro .benefit-card h3 {
+    font-size: 1.45rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+    color: var(--white);
+}
+
+.bg-escuro .benefit-card p {
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.bg-escuro .benefit-card:hover {
+    transform: translateY(-5px);
+    background-color: #31314d;
+    box-shadow: 0 15px 35px rgba(var(--primary-light-rgb), 0.2);
+    border-color: rgba(var(--primary-light-rgb), 0.35);
+}
+
+.bg-escuro .benefit-card:hover::before {
+    width: 80px;
+    background: linear-gradient(90deg, var(--primary-light), var(--accent));
+}
+
+/* --- BLOCO 04 - URGÊNCIA (CLARO) --- */
+.urgency {
+    background: radial-gradient(circle at center, rgba(var(--primary-light-rgb), 0.04), transparent 75%), var(--bg-claro);
+    text-align: center;
+    border-top: 1px solid rgba(var(--primary-rgb), 0.05);
+    border-bottom: 1px solid rgba(var(--primary-rgb), 0.05);
+}
+
+.urgency .section-title {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.3;
+}
+
+.urgency .section-title::after {
+    display: none;
+}
+
+/* --- BLOCO 05 - IDEAL PARA VOCÊ QUE (ESCUDO) --- */
+.ideal-list {
+    max-width: 850px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.bg-escuro .ideal-item {
+    display: flex;
+    gap: 24px;
+    background: var(--bg-escuro-card);
+    border: 1px solid rgba(var(--primary-light-rgb), 0.15);
+    border-radius: var(--radius-md);
+    padding: 24px 30px;
+    transition: var(--transition);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.bg-escuro .ideal-item i {
+    color: var(--primary-light);
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.bg-escuro .ideal-item h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+}
+
+.bg-escuro .ideal-item p {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+}
+
+.bg-escuro .ideal-item:hover {
+    transform: translateX(6px);
+    background-color: #31314d;
+    box-shadow: 0 15px 30px rgba(var(--primary-light-rgb), 0.15);
+    border-color: rgba(var(--primary-light-rgb), 0.3);
+}
+
+@media (max-width: 768px) {
+    .ideal-item {
+        padding: 20px;
+        gap: 16px;
+    }
+}
+
+/* --- BLOCO 06 - CONTEÚDO DO PACOTE (CLARO) --- */
+.receive-content {
+    display: grid;
+    grid-template-columns: 450px 1fr;
+    gap: 48px;
+    align-items: center;
+}
+
+.receive-mockup-wrapper {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    display: block;
+}
+
+.receive-mockup-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: var(--radius-lg);
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.12));
+    transition: var(--transition);
+}
+
+.receive-mockup-wrapper:hover .receive-mockup-img {
+    transform: scale(1.02);
+}
+
+.bg-claro .receive-mockup-placeholder {
+    height: 400px;
+    background: radial-gradient(circle at center, rgba(var(--primary-light-rgb), 0.05), transparent 75%), #f0ede6;
+    border: 2px dashed rgba(var(--primary-rgb), 0.25);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+    gap: 20px;
+    box-shadow: 0 10px 25px rgba(var(--primary-rgb), 0.03);
+}
+
+.bg-claro .receive-mockup-placeholder i {
+    color: var(--primary);
+    filter: drop-shadow(0 4px 8px rgba(var(--primary-rgb), 0.1));
+}
+
+.bg-claro .receive-mockup-placeholder span:nth-of-type(1) {
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.bg-claro .receive-mockup-placeholder span:nth-of-type(2) {
+    font-size: 0.85rem;
+    color: var(--text-slate);
+}
+
+.receive-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.bg-claro .receive-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: 1.05rem;
+    background: var(--white);
+    padding: 16px 20px;
+    border-radius: var(--radius-sm);
+    border-left: 4px solid var(--primary);
+    box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.03);
+    border-top: 1px solid #eae6df;
+    border-right: 1px solid #eae6df;
+    border-bottom: 1px solid #eae6df;
+}
+
+.bg-claro .receive-list li i {
+    color: var(--primary-light);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.bg-claro .receive-list li.total-highlight {
+    background: linear-gradient(90deg, rgba(var(--primary-light-rgb), 0.06), transparent);
+    border-left-color: var(--accent);
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.15rem;
+    border-top: 1px solid rgba(var(--primary-light-rgb), 0.15);
+    border-bottom: 1px solid rgba(var(--primary-light-rgb), 0.15);
+    padding: 18px 24px;
+}
+
+.bg-claro .receive-list li.total-highlight i {
+    color: var(--accent-hover);
+}
+
+@media (max-width: 992px) {
+    .receive-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .receive-mockup-wrapper {
+        height: 300px;
+    }
+    .bg-claro .receive-mockup-placeholder {
+        height: 300px;
+    }
+}
+
+/* --- BLOCO 07 - BÔNUS EXCLUSIVOS (ESCUDO) --- */
+.bonus-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.bg-escuro .bonus-card {
+    background: var(--bg-escuro-card);
+    border: 1px solid rgba(var(--primary-light-rgb), 0.15);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 32px;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: var(--transition);
+    text-align: left;
+}
+
+.bonus-mockup-wrapper {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    display: block;
+}
+
+.bonus-mockup-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.25));
+    transition: var(--transition);
+}
+
+.bg-escuro .bonus-card:hover .bonus-mockup-img {
+    transform: scale(1.03);
+}
+
+.bg-escuro .bonus-mockup-css {
+    width: 100%;
+    height: 240px;
+    background: linear-gradient(135deg, #27273f, #1c1c2e);
+    border: 1px solid rgba(var(--primary-light-rgb), 0.25);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--primary-light);
+    font-size: 0.85rem;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-escuro .bonus-mockup-css i {
+    color: var(--accent);
+    filter: drop-shadow(0 2px 4px rgba(var(--accent-rgb), 0.2));
+}
+
+.bg-escuro .bonus-info-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.bg-escuro .bonus-number {
+    font-family: var(--font-title);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+}
+
+.bg-escuro .bonus-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+    color: var(--white);
+}
+
+.bg-escuro .bonus-card p {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.bg-escuro .bonus-value {
+    display: block;
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(var(--primary-light-rgb), 0.15);
+    padding-top: 12px;
+}
+
+.bg-escuro .bonus-value del {
+    color: var(--accent-red);
+}
+
+.bg-escuro .price-free {
+    color: var(--accent) !important;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.bg-escuro .bonus-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(var(--primary-light-rgb), 0.2);
+    border-color: rgba(var(--primary-light-rgb), 0.4);
+    background-color: #31314d;
+}
+
+.bg-escuro .bonus-card:hover .bonus-mockup-css {
+    background: linear-gradient(135deg, #373757, #1f1f33);
+    border-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .bg-escuro .bonus-card {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 24px;
+        text-align: center;
+    }
+    .bonus-mockup-wrapper {
+        height: 220px;
+    }
+    .bg-escuro .bonus-mockup-css {
+        height: 220px;
+    }
+}
+
+/* --- BLOCO 08 - OFERTA E PREÇOS (CLARO) --- */
+.pricing-grid {
+    display: flex;
+    justify-content: center;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.pricing-grid .plan-card {
+    width: 100%;
+}
+
+.bg-claro .plan-card {
+    background: var(--white);
+    border: 1px solid rgba(var(--primary-rgb), 0.1);
+    border-radius: var(--radius-lg);
+    padding: 48px 36px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(var(--primary-rgb), 0.04);
+    transition: var(--transition);
+}
+
+.plan-mockup-wrapper {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    margin-bottom: 2rem;
+    display: block;
+}
+
+.plan-mockup-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.bg-claro .plan-card:hover .plan-mockup-img {
+    transform: scale(1.02);
+}
+
+.plan-mockup-wrapper .plan-mockup-css {
+    margin-bottom: 0;
+}
+
+.bg-claro .plan-mockup-css {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(135deg, var(--bg-claro), #f0ede6);
+    border: 1px solid rgba(var(--primary-rgb), 0.08);
+    border-radius: var(--radius-md);
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--primary);
+    font-size: 0.95rem;
+    font-family: var(--font-title);
+    font-weight: 700;
+}
+
+.bg-claro .plan-card.highlight .plan-mockup-css {
+    background: linear-gradient(135deg, #e4edf5, var(--bg-claro));
+    border-color: rgba(var(--primary-light-rgb), 0.25);
+}
+
+.bg-claro .plan-mockup-css i {
+    color: var(--primary);
+}
+
+.bg-claro .plan-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -5px rgba(var(--primary-rgb), 0.08);
+}
+
+.bg-claro .plan-card.highlight {
+    border: 2.5px solid var(--accent);
+    box-shadow: 0 20px 40px -5px rgba(var(--accent-rgb), 0.15);
+}
+
+.bg-claro .plan-badge {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+    color: #1C1C2E;
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: 0.8rem;
+    padding: 6px 20px;
+    border-radius: 50px;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.25);
+    text-transform: uppercase;
+}
+
+.bg-claro .plan-title {
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+    color: var(--primary);
+}
+
+.bg-claro .plan-card.highlight .plan-title {
+    color: var(--primary-light);
+}
+
+.bg-claro .plan-includes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.bg-claro .plan-includes li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: var(--text-slate);
+}
+
+.bg-claro .plan-includes li i {
+    flex-shrink: 0;
+}
+
+.bg-claro .plan-includes li i[data-lucide="check"] {
+    color: var(--primary-light);
+}
+
+.bg-claro .bonus-item {
+    font-weight: 600;
+}
+
+.bg-claro .bonus-highlight {
+    color: var(--primary-light);
+}
+
+.bg-claro .plan-price-old {
+    text-align: center;
+    color: var(--text-slate);
+    font-size: 0.95rem;
+    text-decoration: line-through;
+}
+
+.bg-claro .plan-total {
+    text-align: center;
+    color: var(--text-slate);
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.bg-claro .plan-price {
+    font-family: var(--font-title);
+    font-size: 4rem;
+    font-weight: 800;
+    text-align: center;
+    line-height: 1;
+    color: var(--primary);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.bg-claro .plan-price span {
+    font-size: 2rem;
+    margin-top: 8px;
+}
+
+.bg-claro .plan-economy {
+    color: var(--accent-hover);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.bg-claro .plan-btn-wrapper {
+    margin-top: auto;
+}
+
+.bg-claro .plan-btn-wrapper .btn {
+    width: 100%;
+}
+
+.bg-claro .plan-note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-slate);
+    margin-top: 1rem;
+    line-height: 1.4;
+}
+
+.bg-claro .guarantee-seal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--text-slate);
+    font-size: 0.85rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(var(--primary-rgb), 0.08);
+    padding-top: 15px;
+}
+
+.bg-claro .guarantee-seal i {
+    color: var(--primary-light);
+}
+
+/* --- BLOCO 09 - FAQ (ESCUDO) --- */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.bg-escuro .faq-item {
+    background: var(--bg-escuro-card);
+    border: 1px solid rgba(var(--primary-light-rgb), 0.15);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.bg-escuro .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 24px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--white);
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.bg-escuro .faq-question i {
+    color: var(--accent);
+    transition: transform 0.3s ease;
+}
+
+.bg-escuro .faq-question.active {
+    color: var(--accent);
+    background: rgba(var(--accent-rgb), 0.06);
+}
+
+.bg-escuro .faq-question.active i {
+    transform: rotate(180deg);
+}
+
+.bg-escuro .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.bg-escuro .faq-answer p {
+    padding: 0 30px 24px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+}
+
+.bg-escuro .faq-item:hover {
+    border-color: rgba(var(--accent-rgb), 0.3);
+    box-shadow: 0 10px 25px rgba(var(--accent-rgb), 0.05);
+}
+
+/* --- BLOCO 10 - RODAPÉ (CLARO) --- */
+.footer {
+    background-color: var(--white);
+    border-top: 1px solid rgba(var(--primary-rgb), 0.08);
+    text-align: center;
+    padding: 60px 0;
+    font-size: 0.85rem;
+    color: var(--text-slate);
+}
+
+.footer p {
+    margin-bottom: 0.75rem;
+    color: var(--text-slate);
+}
+
+.footer-links {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-links a {
+    color: var(--primary);
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--primary-light);
+}
+
+.footer-links span {
+    color: rgba(var(--primary-rgb), 0.15);
+}
+
+/* --- COMPONENTE CARROSSEL (PREMIUM SLIDER) --- */
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 2rem auto;
+}
+
+.carousel-container {
+    overflow: hidden;
+    width: 100%;
+    border-radius: var(--radius-md);
+    position: relative;
+    padding: 10px 0;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.carousel-slide {
+    flex-shrink: 0;
+    width: 33.333%;
+    padding: 0 12px;
+    box-sizing: border-box;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(var(--primary-rgb), 0.12);
+    border: 1px solid rgba(var(--primary-rgb), 0.08);
+    transition: var(--transition);
+}
+
+.carousel-slide img:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(var(--primary-rgb), 0.2);
+}
+
+.carousel-control {
+    background: var(--white);
+    border: 1px solid rgba(var(--primary-rgb), 0.1);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.15);
+    transition: var(--transition);
+    z-index: 15;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-control:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-control.prev {
+    left: -24px;
+}
+
+.carousel-control.next {
+    right: -24px;
+}
+
+.carousel-dots-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 1.5rem;
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(var(--primary-light-rgb), 0.3);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.carousel-dot.active {
+    background: var(--primary);
+    width: 20px;
+    border-radius: 4px;
+}
+
+/* Responsividade do Carrossel */
+@media (max-width: 992px) {
+    .carousel-slide {
+        width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-slide {
+        width: 100%;
+        padding: 0 4px;
+    }
+    .carousel-control {
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.85);
+    }
+    .carousel-control.prev {
+        left: 5px;
+        margin-right: 0;
+    }
+    .carousel-control.next {
+        right: 5px;
+        margin-left: 0;
+    }
+}
+
+/* --- COMPONENTE DEPOIMENTOS / PROVAS SOCIAIS --- */
+.testimonials-section {
+    padding: 80px 0;
+}
+
+.testimonials-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 3rem;
+}
+
+.testimonial-card {
+    background: var(--white);
+    border: 1px solid rgba(26, 60, 94, 0.08);
+    border-radius: var(--radius-md);
+    padding: 30px;
+    width: calc(33.333% - 16px);
+    min-width: 300px;
+    max-width: 360px;
+    box-shadow: 0 10px 25px rgba(26, 60, 94, 0.03);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(26, 60, 94, 0.08);
+    border-color: rgba(26, 60, 94, 0.18);
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.testimonial-avatar {
+    background: rgba(46, 109, 164, 0.1);
+    color: var(--primary);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    overflow: hidden; /* Garantir que a imagem respeite o border-radius circular */
+}
+
+.testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.testimonial-header h4 {
+    font-size: 1.05rem;
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.testimonial-tag {
+    font-size: 0.8rem;
+    color: var(--text-slate);
+    font-weight: 500;
+    display: block;
+}
+
+.testimonial-stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+}
+
+.testimonial-stars svg,
+.testimonial-stars i {
+    fill: var(--accent);
+    color: var(--accent);
+    width: 18px;
+    height: 18px;
+}
+
+.testimonial-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-slate);
+    margin: 0;
+}
+
+@media (max-width: 992px) {
+    .testimonial-card {
+        width: calc(50% - 12px);
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonial-card {
+        width: 100%;
+        padding: 24px;
+    }
+}
